@@ -31,8 +31,6 @@ install_dbmate() {
     ASDF_INSTALL_VERSION="$version" ASDF_DOWNLOAD_PATH="$download_path" "$PLUGIN_DIR/bin/download"
   fi
 
-  tar -C "$install_path" -xzf "${download_path}/archive.tar.gz"
-
   echo "Moving bin to ${bin_path}"
   cp "${download_path}/dbmate" "${install_path}/dbmate"
 
