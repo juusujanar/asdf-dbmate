@@ -31,7 +31,6 @@ install_dbmate() {
     ASDF_INSTALL_VERSION="$version" ASDF_DOWNLOAD_PATH="$download_path" "$PLUGIN_DIR/bin/download"
   fi
 
-  echo "Moving bin to ${bin_path}"
   cp "${download_path}/dbmate" "${install_path}/dbmate"
 
   echo "Run: asdf <global | local> dbmate ${version}"
