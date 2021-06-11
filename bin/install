@@ -31,10 +31,10 @@ install_dbmate() {
     ASDF_INSTALL_VERSION="$version" ASDF_DOWNLOAD_PATH="$download_path" "$PLUGIN_DIR/bin/download"
   fi
 
-  cp "${download_path}/dbmate" "${install_path}/dbmate"
+  cp "${download_path}/dbmate" "${install_path}/bin/dbmate"
+  chmod +x "${install_path}/dbmate"
 
   echo "Run: asdf <global | local> dbmate ${version}"
-  chmod +x "${install_path}/dbmate"
 }
 
 install_dbmate "$ASDF_INSTALL_VERSION" "$ASDF_DOWNLOAD_PATH" "$ASDF_INSTALL_PATH"
