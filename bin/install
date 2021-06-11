@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -eu
+[ "${BASH_VERSINFO[0]}" -ge 3 ] && set -o pipefail
+
+PLUGIN_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
+
+# shellcheck source=/dev/null
+source "$PLUGIN_DIR/lib/helpers.sh"
+
+mktemp () {
+    local tempdir=""
+    local platform=""
+    platform="$(get_platform)"
+
+    if [ "linux" = "$platform" ] ; then
+        tempdir=$(mktemp -d asdf-dbmate.XXXX)
+    else
+        tempdir=$(mktemp -dt asdf-dbmate.XXXX)
+    fi
+
+    echo -n "$tempdir"
+}
+
+install_dbmate() {
+  local version="$1"
+  local download_path="$2"
+  local install_path="$3"
+
+  if [ -z "$download_path" ] ; then
+    download_path="$(mktemp)"
+    ASDF_INSTALL_VERSION="$version" ASDF_DOWNLOAD_PATH="$download_path" "$PLUGIN_DIR/bin/download"
+  fi
+
+  tar -C "$install_path" -xzf "${download_path}/archive.tar.gz"
+
+  echo "Moving bin to ${bin_path}"
+  cp "${download_path}/dbmate" "${install_path}/dbmate"
+
+  echo "Run: asdf <global | local> dbmate ${version}"
+  chmod +x "${install_path}/dbmate"
+}
+
+install_dbmate "$ASDF_INSTALL_VERSION" "$ASDF_DOWNLOAD_PATH" "$ASDF_INSTALL_PATH"

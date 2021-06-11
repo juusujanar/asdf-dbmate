@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -eu
+[ "${BASH_VERSINFO[0]}" -ge 3 ] && set -o pipefail
+
+PLUGIN_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
+
+# shellcheck source=/dev/null
+source "$PLUGIN_DIR/lib/helpers.sh"
+
+download_dbmate () {
+    local version=$1
+    local download_path=$2
+    local platform=""
+    local arch=""
+
+    platform=$(get_platform)
+    arch=$(get_arch)
+
+    local filename="dbmate-${platform}-${arch}"
+
+    curl -sL "https://github.com/amacneil/dbmate/releases/download/v${version}/${filename}" -o "${download_path}/dbmate"
+}
+
+download_dbmate "$ASDF_INSTALL_VERSION" "$ASDF_DOWNLOAD_PATH"
