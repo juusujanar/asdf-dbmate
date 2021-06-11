@@ -32,8 +32,9 @@ install_dbmate() {
   fi
 
   mkdir -p "${install_path}/bin"
+
   cp "${download_path}/dbmate" "${install_path}/bin/dbmate"
-  chmod +x "${install_path}/dbmate"
+  chmod +x "${install_path}/bin/dbmate"
 
   echo "Run: asdf <global | local> dbmate ${version}"
 }
