@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/juusujanar/asdf-dbmate/workflows/Test/badge.svg?branch=master)
 
-GitHub CLI plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
+[dbmate](https://github.com/amacneil/dbmate) plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
 
 ## Install
 
