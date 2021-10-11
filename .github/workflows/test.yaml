@@ -13,6 +13,7 @@ on:
 jobs:
   plugin_test:
     strategy:
+      fail-fast: false
       matrix:
         os: [macOS-latest, ubuntu-latest]
 
@@ -25,3 +26,24 @@ jobs:
           command: dbmate --version
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run ShellCheck
+        run: shellcheck bin/*
+
+  format:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install shfmt
+        run: brew install shfmt
+
+      - name: Run shfmt
+        run: shfmt -d .
