@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-dbmate [![Build](https://github.com/juusujanar/asdf-dbmate/actions/workflows/test.yml/badge.svg)](https://github.com/juusujanar/asdf-dbmate/actions/workflows/test.yml) [![Lint](https://github.com/juusujanar/asdf-dbmate/actions/workflows/lint.yml/badge.svg)](https://github.com/juusujanar/asdf-dbmate/actions/workflows/lint.yml)
+# asdf-dbmate [![Build](https://github.com/juusujanar/asdf-dbmate/actions/workflows/test.yaml/badge.svg)](https://github.com/juusujanar/asdf-dbmate/actions/workflows/test.yaml) [![Lint](https://github.com/juusujanar/asdf-dbmate/actions/workflows/lint.yml/badge.svg)](https://github.com/juusujanar/asdf-dbmate/actions/workflows/lint.yml)
 
 
 [dbmate](https://github.com/amacneil/dbmate) plugin for the [asdf version manager](https://asdf-vm.com).
